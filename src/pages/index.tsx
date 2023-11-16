@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 
 import gsap from 'gsap';
 
-import * as styles from './GSapTest.module.scss';
+import * as styles from './index.module.scss';
 
-export const GSapTest: React.FC = () => {
+const Index: React.FC = () => {
   useEffect(() => {
     gsap.fromTo(
       '#title',
@@ -37,3 +37,5 @@ export const GSapTest: React.FC = () => {
     </>
   );
 };
+
+export default Index;
