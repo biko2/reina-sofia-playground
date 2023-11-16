@@ -1,0 +1,30 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "javascript.validate.enable": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "importSorter.generalConfiguration.sortOnBeforeSave": true,
+  "importSorter.sortConfiguration.customOrderingRules.rules": [
+    {
+      "type": "importMember",
+      "regex": "^$",
+      "orderLevel": 10,
+      "disableSort": true
+    },
+    {
+      "regex": "react",
+      "orderLevel": 1,
+      "disableSort": true
+    },
+    {
+      "regex": "^[.$]|^(ui)|^(src)|^(models)|^(components)",
+      "orderLevel": 30
+    }
+  ],
+  "importSorter.importStringConfiguration.tabSize": 2,
+  "importSorter.importStringConfiguration.trailingComma": "multiLine",
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimitExceptIfOnlyOne",
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  }
+}
