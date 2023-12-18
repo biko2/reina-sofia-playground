@@ -16,7 +16,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "framer-motion": "^10.16.16",
     "gatsby": "^5.12.4",
     "gatsby-plugin-sass": "^6.12.3",
     "gsap": "^3.12.2",
