@@ -5,7 +5,7 @@ import gsap from 'gsap';
 
 import * as styles from './index.module.scss';
 
-const Index: React.FC = () => {
+const About: React.FC = () => {
   useEffect(() => {
     gsap.fromTo(
       '#title',
@@ -36,11 +36,11 @@ const Index: React.FC = () => {
         en Gatsby y con CSS modules.
       </p>
 
-      <AniLink paintDrip to="/about">
-        Explora más sobre nosotros
+      <AniLink swipe to="/">
+        Regresa a la home
       </AniLink>
     </>
   );
 };
 
-export default Index;
+export default About;
