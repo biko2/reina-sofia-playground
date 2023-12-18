@@ -1,39 +1,36 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import gsap from 'gsap';
+import { motion } from 'framer-motion';
 
 import * as styles from './index.module.scss';
 
 const Index: React.FC = () => {
-  useEffect(() => {
-    gsap.fromTo(
-      '#title',
-      { x: 0 },
-      { x: 400, ease: 'Linear.easeNone', repeat: -1, duration: 3, yoyo: true }
-    );
-
-    gsap.fromTo(
-      '#paragraph',
-      { y: 0 },
-      { y: 400, ease: 'Linear.easeNone', repeat: -1, duration: 3, yoyo: true }
-    );
-
-    gsap.to('#gsap', { rotation: 360, repeat: -1, duration: 8 });
-  }, []);
-
   return (
     <>
-      <h1 className={styles.title} id="title">
+      <motion.h1
+        animate={{ x: [0, 400, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        className={styles.title}
+      >
         Reina Sofía playground
-      </h1>
+      </motion.h1>
 
-      <p id="paragraph">
+      <motion.p
+        animate={{ y: [0, 400, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        id="paragraph"
+      >
         Lanzamos este espacio para probar animaciones de{' '}
-        <span className={styles.gsap} id="gsap">
+        <motion.span
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className={styles.gsap}
+          id="gsap"
+        >
           GSAP
-        </span>{' '}
+        </motion.span>{' '}
         en Gatsby y con CSS modules.
-      </p>
+      </motion.p>
     </>
   );
 };
