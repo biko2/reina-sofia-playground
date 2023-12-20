@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import gsap from 'gsap';
 
 import * as styles from './index.module.scss';
 
 const Index: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
   useEffect(() => {
     gsap.fromTo(
       '#title',
@@ -23,9 +26,15 @@ const Index: React.FC = () => {
 
   return (
     <>
+      <select onChange={e => i18n.changeLanguage(e.target.value)}>
+        <option value="es">ES</option>
+        <option value="cat">CAT</option>
+      </select>
       <h1 className={styles.title} id="title">
-        Reina Sofía playground
+        {t('header')}
       </h1>
+
+      <h2>{t('welcome')}</h2>
 
       <p id="paragraph">
         Lanzamos este espacio para probar animaciones de{' '}
