@@ -3,10 +3,9 @@ import React, { ReactNode, useRef } from 'react';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 
 export const MediaContent: React.FC<{
-  isDarkTheme?: any;
   setIsDarkTheme: (value: boolean) => void;
   children: ReactNode;
-}> = ({ isDarkTheme, setIsDarkTheme, children }) => {
+}> = ({ setIsDarkTheme, children }) => {
   let container = useRef(null);
 
   let { scrollYProgress } = useScroll({

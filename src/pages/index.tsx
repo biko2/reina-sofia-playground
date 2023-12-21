@@ -125,7 +125,7 @@ const Index: React.FC = () => {
 
         <div style={{ height: '300px' }} />
 
-        <MediaContent isDarkTheme setIsDarkTheme={setIsDarkTheme}>
+        <MediaContent setIsDarkTheme={setIsDarkTheme}>
           <h2>Picasso 1906. La gran transformación</h2>
 
           <iframe
@@ -152,7 +152,7 @@ const Index: React.FC = () => {
         </MediaContent>
         <div style={{ height: '300px' }} />
 
-        <MediaContent isDarkTheme setIsDarkTheme={setIsDarkTheme}>
+        <MediaContent setIsDarkTheme={setIsDarkTheme}>
           <h2>Picasso 1906. La gran transformación</h2>
 
           <iframe
