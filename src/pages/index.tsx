@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import gsap from 'gsap';
 
+import { MediaContent } from '../components/MediaContent';
 import * as styles from './index.module.scss';
-import { MediaContent } from './MediaContent';
 
 const Index: React.FC = () => {
   const [isMedia, setIsMedia] = useState<boolean[]>([]);
