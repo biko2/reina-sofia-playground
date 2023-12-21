@@ -50,10 +50,10 @@ const Index: React.FC = () => {
   }, []);
 
   const themeClasses = isMedia.map(state => (state ? styles.darkTheme : ''));
-  const framerTheme = isDarkTheme ? styles.dark : '';
+  const framerTheme = isDarkTheme ? styles.darkTheme : '';
 
   return (
-    <div className={`${framerTheme}`}>
+    <div className={`${styles.wrapper} ${framerTheme}`}>
       <div className={`${styles.container} ${themeClasses.join(' ')}`}>
         <h1 className={styles.title} id="title">
           Reina Sofía playground
