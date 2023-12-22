@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'gatsby';
+
 import * as styles from './ActivityPage.module.scss';
 
 interface ActivityData {
@@ -37,6 +39,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
   return (
     <div style={{ padding: '60px' }}>
       <h1>Actividad</h1>
+      <Link to="/">Volver a la home</Link>
       <section>
         <h2>{activities.activity1.title}</h2>
 
