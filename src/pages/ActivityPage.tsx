@@ -37,7 +37,7 @@ const activities: ActivityData = {
 
 const ActivityPage: React.FC<ActivityData> = () => {
   return (
-    <div style={{ padding: '60px' }}>
+    <div className={styles.wrapper}>
       <h1>Actividad</h1>
       <Link to="/">Volver a la home</Link>
       <section>
