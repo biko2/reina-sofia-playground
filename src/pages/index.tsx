@@ -1,44 +1,49 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
+import { motion } from 'framer-motion';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
-import gsap from 'gsap';
 
 import * as styles from './index.module.scss';
 
 const Index: React.FC = () => {
-  useEffect(() => {
-    gsap.fromTo(
-      '#title',
-      { x: 0 },
-      { x: 400, ease: 'Linear.easeNone', repeat: -1, duration: 3, yoyo: true }
-    );
-
-    gsap.fromTo(
-      '#paragraph',
-      { x: 0 },
-      { x: 400, ease: 'Linear.easeNone', repeat: -1, duration: 3, yoyo: true }
-    );
-
-    gsap.to('#gsap', { rotation: 360, repeat: -1, duration: 8 });
-  }, []);
-
   return (
     <>
-      <h1 className={styles.title} id="title">
+      <motion.h1
+        animate={{ x: [0, 400, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        className={styles.title}
+      >
         Reina Sofía playground
-      </h1>
+      </motion.h1>
 
-      <p id="paragraph">
+      <ul>
+        <li>
+          <AniLink to="/DarkTheme/">Prueba dark theme</AniLink>
+        </li>
+        <li>
+          <AniLink to="/DarkThemeFramer/">Prueba dark theme con Framer Motion</AniLink>
+        </li>
+        <li>
+          <AniLink to="/ActivityPage/">Prueba de página de actividad</AniLink>
+        </li>
+      </ul>
+
+      <motion.p
+        animate={{ y: [0, 400, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        id="paragraph"
+      >
         Lanzamos este espacio para probar animaciones de{' '}
-        <span className={styles.gsap} id="gsap">
-          GSAP
-        </span>{' '}
+        <motion.span
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className={styles.gsap}
+          id="gsap"
+        >
+          Framer Motion
+        </motion.span>{' '}
         en Gatsby y con CSS modules.
-      </p>
-
-      <AniLink paintDrip to="/about">
-        Explora más sobre nosotros
-      </AniLink>
+      </motion.p>
     </>
   );
 };

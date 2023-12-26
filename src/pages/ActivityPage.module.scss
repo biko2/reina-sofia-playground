@@ -1,0 +1,44 @@
+.wrapper {
+  padding: 60px;
+  max-width: 1000px;
+}
+
+.fullWidthImage {
+  width: 100%;
+  height: auto;
+}
+
+.intro {
+  margin-top: 48px;
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+
+  column-count: 2;
+  gap: 48px;
+
+  line-height: 1.5;
+  border-bottom: 1px solid black;
+
+  p {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.image {
+  float: right;
+  max-width: 50%;
+
+  margin-left: 48px;
+  margin-bottom: 48px;
+}
+
+.fullWidthIntro {
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+
+  line-height: 1.5;
+
+  border-bottom: 1px solid black;
+}
