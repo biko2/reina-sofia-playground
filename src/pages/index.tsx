@@ -18,13 +18,24 @@ const Index: React.FC = () => {
 
       <ul>
         <li>
-          <AniLink to="/DarkTheme/">Prueba dark theme</AniLink>
+          <AniLink paintDrip to="/DarkTheme/">
+            Prueba dark theme
+          </AniLink>
         </li>
         <li>
-          <AniLink to="/DarkThemeFramer/">Prueba dark theme con Framer Motion</AniLink>
+          <AniLink paintDrip to="/DarkThemeFramer/">
+            Prueba dark theme con Framer Motion
+          </AniLink>
         </li>
         <li>
-          <AniLink to="/ActivityPage/">Prueba de página de actividad</AniLink>
+          <AniLink paintDrip to="/ActivityPage/">
+            Prueba de página de actividad
+          </AniLink>
+        </li>
+        <li>
+          <AniLink paintDrip to="/about/">
+            Contacta con nosotras
+          </AniLink>
         </li>
       </ul>
 
