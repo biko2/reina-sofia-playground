@@ -40,7 +40,7 @@ const Index: React.FC = () => {
           className={styles.gsap}
           id="gsap"
         >
-          GSAP
+          Framer Motion
         </motion.span>{' '}
         en Gatsby y con CSS modules.
       </motion.p>
