@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { motion } from 'framer-motion';
+import { Link } from 'gatsby';
 
 import * as styles from './index.module.scss';
 
@@ -14,6 +15,15 @@ const Index: React.FC = () => {
       >
         Reina Sofía playground
       </motion.h1>
+
+      <ul>
+        <li>
+          <Link to="/DarkTheme/">Prueba dark theme</Link>
+        </li>
+        <li>
+          <Link to="/DarkThemeFramer/">Prueba dark theme con Framer Motion</Link>
+        </li>
+      </ul>
 
       <motion.p
         animate={{ y: [0, 400, 0] }}
