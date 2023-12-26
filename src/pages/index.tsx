@@ -23,6 +23,9 @@ const Index: React.FC = () => {
         <li>
           <Link to="/DarkThemeFramer/">Prueba dark theme con Framer Motion</Link>
         </li>
+        <li>
+          <Link to="/ActivityPage/">Prueba de página de actividad</Link>
+        </li>
       </ul>
 
       <motion.p
