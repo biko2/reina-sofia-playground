@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 
+import { Link } from 'gatsby';
 import gsap from 'gsap';
 
 import * as styles from './index.module.scss';
@@ -26,6 +27,15 @@ const Index: React.FC = () => {
       <h1 className={styles.title} id="title">
         Reina Sofía playground
       </h1>
+
+      <ul>
+        <li>
+          <Link to="/DarkTheme/">Prueba dark theme</Link>
+        </li>
+        <li>
+          <Link to="/DarkThemeFramer/">Prueba dark theme con Framer Motion</Link>
+        </li>
+      </ul>
 
       <p id="paragraph">
         Lanzamos este espacio para probar animaciones de{' '}
