@@ -108,6 +108,7 @@
     "./gatsby-config.ts",
     "./plugins/**/*",
     "typings.d.ts",
-    "gatsby-browser.tsx"
+    "gatsby-browser.tsx",
+    "gatsby-ssr.tsx"
   ]
 }

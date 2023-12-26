@@ -3,24 +3,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
 
+import { Layout } from '../components/Layout';
 import * as styles from './index.module.scss';
 
 const Index: React.FC = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, background: '#c0c0c0' }}
-      animate={{ opacity: 1, background: 'transparent' }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 2 }}
-    >
-      <motion.h1
-        animate={{ x: [0, 400, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-        className={styles.title}
-      >
-        Reina Sofía playground
-      </motion.h1>
-
+    <Layout slug="index" title="Reina Sofía playground">
       <ul>
         <li>
           <Link to="/DarkTheme/">Prueba dark theme</Link>
@@ -39,7 +27,6 @@ const Index: React.FC = () => {
       <motion.p
         animate={{ y: [0, 400, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-        id="paragraph"
       >
         Lanzamos este espacio para probar animaciones de{' '}
         <motion.span
@@ -52,7 +39,7 @@ const Index: React.FC = () => {
         </motion.span>{' '}
         en Gatsby y con CSS modules.
       </motion.p>
-    </motion.div>
+    </Layout>
   );
 };
 
