@@ -107,6 +107,7 @@
     "./gatsby-node.ts",
     "./gatsby-config.ts",
     "./plugins/**/*",
-    "typings.d.ts"
+    "typings.d.ts",
+    "gatsby-browser.tsx"
   ]
 }

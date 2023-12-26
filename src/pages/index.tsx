@@ -1,13 +1,18 @@
 import React from 'react';
 
 import { motion } from 'framer-motion';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link } from 'gatsby';
 
 import * as styles from './index.module.scss';
 
 const Index: React.FC = () => {
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0, background: '#c0c0c0' }}
+      animate={{ opacity: 1, background: 'transparent' }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
+    >
       <motion.h1
         animate={{ x: [0, 400, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
@@ -18,24 +23,16 @@ const Index: React.FC = () => {
 
       <ul>
         <li>
-          <AniLink paintDrip to="/DarkTheme/">
-            Prueba dark theme
-          </AniLink>
+          <Link to="/DarkTheme/">Prueba dark theme</Link>
         </li>
         <li>
-          <AniLink paintDrip to="/DarkThemeFramer/">
-            Prueba dark theme con Framer Motion
-          </AniLink>
+          <Link to="/DarkThemeFramer/">Prueba dark theme con Framer Motion</Link>
         </li>
         <li>
-          <AniLink paintDrip to="/ActivityPage/">
-            Prueba de página de actividad
-          </AniLink>
+          <Link to="/ActivityPage/">Prueba de página de actividad</Link>
         </li>
         <li>
-          <AniLink paintDrip to="/about/">
-            Contacta con nosotras
-          </AniLink>
+          <Link to="/about/">Contacta con nosotras</Link>
         </li>
       </ul>
 
@@ -55,7 +52,7 @@ const Index: React.FC = () => {
         </motion.span>{' '}
         en Gatsby y con CSS modules.
       </motion.p>
-    </>
+    </motion.div>
   );
 };
 
