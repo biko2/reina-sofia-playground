@@ -1,49 +1,45 @@
-import React, { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import React from 'react';
 
-import gsap from 'gsap';
+import { motion } from 'framer-motion';
+import { Link } from 'gatsby';
 
+import { Layout } from '../components/Layout';
 import * as styles from './index.module.scss';
 
 const Index: React.FC = () => {
-  const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-    gsap.fromTo(
-      '#title',
-      { x: 0 },
-      { x: 400, ease: 'Linear.easeNone', repeat: -1, duration: 3, yoyo: true }
-    );
-
-    gsap.fromTo(
-      '#paragraph',
-      { y: 0 },
-      { y: 400, ease: 'Linear.easeNone', repeat: -1, duration: 3, yoyo: true }
-    );
-
-    gsap.to('#gsap', { rotation: 360, repeat: -1, duration: 8 });
-  }, []);
-
   return (
-    <>
-      <select onChange={e => i18n.changeLanguage(e.target.value)}>
-        <option value="es">ES</option>
-        <option value="cat">CAT</option>
-      </select>
-      <h1 className={styles.title} id="title">
-        {t('header')}
-      </h1>
+    <Layout slug="index" title="Reina Sofía playground">
+      <ul>
+        <li>
+          <Link to="/DarkTheme/">Prueba dark theme</Link>
+        </li>
+        <li>
+          <Link to="/DarkThemeFramer/">Prueba dark theme con Framer Motion</Link>
+        </li>
+        <li>
+          <Link to="/ActivityPage/">Prueba de página de actividad</Link>
+        </li>
+        <li>
+          <Link to="/about/">Contacta con nosotras</Link>
+        </li>
+      </ul>
 
-      <h2>{t('welcome')}</h2>
-
-      <p id="paragraph">
+      <motion.p
+        animate={{ y: [0, 400, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+      >
         Lanzamos este espacio para probar animaciones de{' '}
-        <span className={styles.gsap} id="gsap">
-          GSAP
-        </span>{' '}
+        <motion.span
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className={styles.gsap}
+          id="gsap"
+        >
+          Framer Motion
+        </motion.span>{' '}
         en Gatsby y con CSS modules.
-      </p>
-    </>
+      </motion.p>
+    </Layout>
   );
 };
 
