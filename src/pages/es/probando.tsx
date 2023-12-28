@@ -1,10 +1,11 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { Link } from 'gatsby';
 
+import { useTranslations } from '../../infrastructure/translations';
+
 const Probando: React.FC = () => {
-  const { t } = useTranslation('translation', { lng: 'es' });
+  const { t } = useTranslations('es');
 
   return (
     <>

@@ -1,9 +1,7 @@
-import { initReactI18next } from 'react-i18next';
+import i18next, { TFunction } from 'i18next';
 
-import i18n from 'i18next';
-
-export const initI18next = () => {
-  return i18n.use(initReactI18next).init({
+export function tFunctionFactory(lang: string): TFunction {
+  i18next.init({
     fallbackLng: 'es',
     lng: 'es',
 
@@ -29,4 +27,6 @@ export const initI18next = () => {
       escapeValue: false,
     },
   });
-};
+
+  return i18next.getFixedT(lang);
+}

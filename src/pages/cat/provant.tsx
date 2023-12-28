@@ -1,11 +1,11 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { Link } from 'gatsby';
 
-const Provant: React.FC = () => {
-  const { t } = useTranslation('translation', { lng: 'cat' });
+import { useTranslations } from '../../infrastructure/translations';
 
+const Provant: React.FC = () => {
+  const { t } = useTranslations('cat');
   return (
     <>
       <h1>{t('probando')}</h1>
