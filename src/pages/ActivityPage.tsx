@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useMediaQuery as useMediaQueryBase } from 'react-responsive';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'gatsby';
@@ -40,6 +41,7 @@ const activities: ActivityData = {
 const ActivityPage: React.FC<ActivityData> = () => {
   const [activeSection, setActiveSection] = useState('Home');
   const [isSrolling, setIsScrolling] = useState(false);
+  const isMobile = useMediaQueryBase({ query: `(max-width: 768px)` });
 
   const handleVisibilityScroll = () => {
     if (window.scrollY >= 100) {
@@ -59,13 +61,13 @@ const ActivityPage: React.FC<ActivityData> = () => {
 
   const NavigationAnimation = {
     initial: {
-      y: -100,
-      x: '-50%',
+      y: !isMobile ? -100 : 100,
+      x: !isMobile ? '-50%' : '0%',
       opacity: 0,
     },
     animate: {
       y: 0,
-      x: '-50%',
+      x: !isMobile ? '-50%' : '0%',
       opacity: 1,
       transition: {
         type: 'spring',
@@ -74,7 +76,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
       },
     },
     exit: {
-      y: -150,
+      y: !isMobile ? -150 : 150,
       opacity: 0,
     },
   };
@@ -115,17 +117,17 @@ const ActivityPage: React.FC<ActivityData> = () => {
         {isSrolling && (
           <motion.div
             key={1}
-            className={styles.navbar}
+            className={styles.navbarWrapper}
             initial="initial"
             animate="animate"
             exit="exit"
             variants={NavigationAnimation}
           >
-            <ul className={styles.navbarContent}>
+            <ul className={styles.navbar}>
               {links.map(link => (
                 <motion.li
-                  className={`${styles.element} ${
-                    link.name === activeSection && styles.elementActive
+                  className={`${styles.navbarItem} ${
+                    link.name === activeSection && styles.navbarActiveItem
                   }`}
                 >
                   <Link to={link.url} onClick={() => setActiveSection(link.name)}>
