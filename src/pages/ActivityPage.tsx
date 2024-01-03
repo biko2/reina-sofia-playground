@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useMediaQuery as useMediaQueryBase } from 'react-responsive';
 
+import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'gatsby';
 
 import { Layout } from '../components/Layout';
@@ -37,12 +39,111 @@ const activities: ActivityData = {
 };
 
 const ActivityPage: React.FC<ActivityData> = () => {
+  const [activeSection, setActiveSection] = useState('Home');
+  const [isSrolling, setIsScrolling] = useState(false);
+  const isMobile = useMediaQueryBase({ query: `(max-width: 768px)` });
+
+  const handleVisibilityScroll = () => {
+    if (window.scrollY >= 100) {
+      setIsScrolling(true);
+    } else {
+      setIsScrolling(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleVisibilityScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleVisibilityScroll);
+    };
+  }, []);
+
+  const NavigationAnimation = {
+    initial: {
+      y: !isMobile ? -100 : 100,
+      x: !isMobile ? '-50%' : '0%',
+      opacity: 0,
+    },
+    animate: {
+      y: 0,
+      x: !isMobile ? '-50%' : '0%',
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        damping: 10,
+        stiffness: 100,
+      },
+    },
+    exit: {
+      y: !isMobile ? -150 : 150,
+      opacity: 0,
+    },
+  };
+  const links = [
+    { name: 'Actividad con imagen fullwidth', url: '#seccion1' },
+    { name: 'Actividad con imagen', url: '#seccion2' },
+    { name: 'Actividad sin imagen', url: '#seccion3' },
+  ];
+
+  const sectionRefs = [useRef(null), useRef(null), useRef(null)];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+
+      sectionRefs.forEach((ref: any, index) => {
+        if (ref.current) {
+          const offsetTop = ref.current.offsetTop - 100;
+          const height = ref.current.clientHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
+            setActiveSection(links[index].name);
+          }
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  });
+
   return (
-    <Layout title="Activity page" slug="activity-page">
+    <Layout slug="activity-page">
+      <AnimatePresence>
+        {isSrolling && (
+          <motion.div
+            key={1}
+            className={styles.navbarWrapper}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={NavigationAnimation}
+          >
+            <ul className={styles.navbar}>
+              {links.map(link => (
+                <motion.li
+                  className={`${styles.navbarItem} ${
+                    link.name === activeSection && styles.navbarActiveItem
+                  }`}
+                >
+                  <Link to={link.url} onClick={() => setActiveSection(link.name)}>
+                    {link.name}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className={styles.wrapper}>
         <h1>Actividad</h1>
         <Link to="/">Volver a la home</Link>
-        <section>
+        <section id="seccion1" ref={sectionRefs[0]}>
           <h2>{activities.activity1.title}</h2>
 
           {activities.activity1.image && (
@@ -96,7 +197,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
           </div>
         </section>
 
-        <section>
+        <section id="seccion2" ref={sectionRefs[1]}>
           <h2>{activities.activity2.title}</h2>
           <div>
             {activities.activity2.image && (
@@ -157,7 +258,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
           </div>
         </section>
 
-        <section>
+        <section id="seccion3" ref={sectionRefs[2]}>
           <h2>{activities.activity3.title}</h2>
 
           {activities.activity3.image && (

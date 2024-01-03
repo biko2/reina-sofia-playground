@@ -8,6 +8,63 @@
   height: auto;
 }
 
+.navbarWrapper {
+  position: fixed;
+  bottom: 0;
+
+  margin: 12px;
+  width: calc(100dvw - 24px);
+
+  border-radius: 24px;
+
+  background-color: #2e2e2e;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  @media (min-width: 768px) {
+    width: fit-content;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: unset;
+  }
+}
+
+.navbar {
+  display: flex;
+  list-style: none;
+  overflow-x: scroll;
+
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbarActiveItem {
+  a {
+    &:link,
+    &:visited {
+      color: #f1ff85 !important;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.navbarItem {
+  position: relative;
+  padding: 24px 12px;
+
+  a {
+    white-space: nowrap;
+    &:link,
+    &:visited {
+      color: #f0f1e9;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  }
+}
+
 .intro {
   margin-top: 48px;
   margin-bottom: 48px;
