@@ -22,6 +22,12 @@ const Index: React.FC = () => {
         <li>
           <Link to="/about/">Contacta con nosotras</Link>
         </li>
+        <li>
+          <Link to="/cat/provant">Contenido en catalán</Link>
+        </li>
+        <li>
+          <Link to="/es/probando">Contenido en castellano</Link>
+        </li>
       </ul>
 
       <motion.p
