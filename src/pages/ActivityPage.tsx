@@ -36,6 +36,27 @@ const activities: ActivityData = {
     title: 'Actividad sin imagen',
     image: null,
   },
+  activity4: {
+    title: 'Actividad sin imagen con intro corta',
+    image: null,
+  },
+};
+
+const checkTextLength = (containerId: string) => {
+  const textContainer = document.getElementById(containerId);
+
+  if (textContainer) {
+    const paragraphs = textContainer.querySelectorAll('p');
+    const textLenght = Array.from(paragraphs).reduce(
+      (total, paragraph) => total + (paragraph.textContent ? paragraph.textContent.length : 0),
+      0
+    );
+
+    if (textLenght > 700 && textLenght < 4000) {
+      return styles.intro;
+    }
+    return styles.fullWidth;
+  }
 };
 
 const ActivityPage: React.FC<ActivityData> = () => {
@@ -84,9 +105,10 @@ const ActivityPage: React.FC<ActivityData> = () => {
     { name: 'Actividad con imagen fullwidth', url: '#seccion1' },
     { name: 'Actividad con imagen', url: '#seccion2' },
     { name: 'Actividad sin imagen', url: '#seccion3' },
+    { name: 'Actividad intro corta', url: '#seccion4' },
   ];
 
-  const sectionRefs = [useRef(null), useRef(null), useRef(null)];
+  const sectionRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -402,6 +424,38 @@ const ActivityPage: React.FC<ActivityData> = () => {
               luchas a favor de los derechos laborales, civiles y la defensa de los derechos
               humanos, así como el interés de Shahn por temas espirituales e historias bíblicas en
               sus últimos años.
+            </p>
+          </div>
+        </section>
+
+        <section id="seccion4" ref={sectionRefs[3]}>
+          <h2>{activities.activity4.title}</h2>
+
+          {activities.activity4.image && (
+            <img
+              className={
+                activities.activity4.image.isFullWidth ? styles.fullWidthImage : styles.image
+              }
+              src={activities.activity4.image.url}
+            />
+          )}
+
+          <div
+            id="textContainer4"
+            className={
+              !activities.activity4.image
+                ? checkTextLength('textContainer4')
+                : activities.activity4.image.isFullWidth && checkTextLength('textContainer4')
+            }
+          >
+            <p>
+              Proveniente de una familia de clase trabajadora e inmigrante de Europa del Este, Ben
+              Shahn fue uno de los artistas más prolíficos y comprometidos de Estados Unidos entre
+              las décadas de 1930 y 1960. Su obra trató aspectos cruciales del contexto social
+              estadounidense y de la historia global, desde el New Deal hasta la guerra de Vietnam.
+              Promoviendo como convicción “la no conformidad” (nonconformity, en palabras del
+              artista), Shahn desafió el predominio del expresionismo abstracto y de otras variantes
+              del arte de vanguardia de la década de 1950.
             </p>
           </div>
         </section>
