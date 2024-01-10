@@ -47,41 +47,48 @@ const ActivityPage: React.FC<ActivityData> = () => {
   const [isSrolling, setIsScrolling] = useState(false);
   const isMobile = useMediaQueryBase({ query: `(max-width: 768px)` });
 
-  const getTextLayout = (containerId: string) => {
+  const changeContainerClass = (containerId: string, activity: any) => {
     const viewportHeight = window.innerHeight;
     const element = document.getElementById(containerId);
 
     if (element) {
       const elementHeight = element.offsetHeight;
+      element.className = '';
 
-      console.log(viewportHeight);
-      console.log(elementHeight);
-
-      if (elementHeight + 100 > viewportHeight || elementHeight < viewportHeight / 3) {
-        element.classList.replace(styles.intro, styles.fullWidthIntro);
+      if (activity.image && !activity.image?.isFullWidth) {
+        element.className = styles.fullWidthIntro;
       } else {
-        element.classList.add(styles.intro);
+        if (elementHeight + 100 > viewportHeight || elementHeight < viewportHeight / 3) {
+          element.className = styles.fullWidthIntro;
+        } else {
+          element.className = styles.intro;
+        }
       }
     }
   };
 
+  const textContainerIds = ['textContainer1', 'textContainer2', 'textContainer3', 'textContainer4'];
+
+  const setTextLayout = () => {
+    textContainerIds.forEach((id, index) => {
+      if (index === 0) {
+        changeContainerClass(id, activities.activity1);
+      } else if (index === 1) {
+        changeContainerClass(id, activities.activity2);
+      } else if (index === 2) {
+        changeContainerClass(id, activities.activity3);
+      } else if (index === 3) {
+        changeContainerClass(id, activities.activity4);
+      }
+    });
+  };
   useEffect(() => {
-    getTextLayout('textContainer1');
-    getTextLayout('textContainer2');
-    getTextLayout('textContainer3');
-    getTextLayout('textContainer4');
+    setTextLayout();
 
-    const updateClass = () => {
-      getTextLayout('textContainer1');
-      getTextLayout('textContainer2');
-      getTextLayout('textContainer3');
-      getTextLayout('textContainer4');
-    };
-
-    window.addEventListener('resize', updateClass);
+    window.addEventListener('resize', setTextLayout);
 
     return () => {
-      window.removeEventListener('resize', updateClass);
+      window.removeEventListener('resize', setTextLayout);
     };
   }, []);
 
@@ -198,14 +205,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
             />
           )}
 
-          <div
-            id="textContainer1"
-            className={
-              activities.activity1.image && !activities.activity1.image.isFullWidth
-                ? styles.fullWidthIntro
-                : styles.intro
-            }
-          >
+          <div id="textContainer1">
             <p>
               La exposición Ben Shahn. De la no conformidad examina la obra de este artista (Kaunas,
               Lituania, 1898 - Nueva York, 1969), figura central del realismo social americano. La
@@ -249,14 +249,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               />
             )}
 
-            <div
-              id="textContainer2"
-              className={
-                activities.activity2.image && !activities.activity2.image.isFullWidth
-                  ? styles.fullWidthIntro
-                  : styles.intro
-              }
-            >
+            <div id="textContainer2">
               <p>
                 La exposición Ben Shahn. De la no conformidad examina la obra de este artista
                 (Kaunas, Lituania, 1898 - Nueva York, 1969), figura central del realismo social
@@ -311,14 +304,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
             />
           )}
 
-          <div
-            id="textContainer3"
-            className={
-              activities.activity3.image && !activities.activity3.image.isFullWidth
-                ? styles.fullWidthIntro
-                : styles.intro
-            }
-          >
+          <div id="textContainer3">
             <p>
               1. La exposición Ben Shahn. De la no conformidad examina la obra de este artista
               (Kaunas, Lituania, 1898 - Nueva York, 1969), figura central del realismo social
@@ -396,14 +382,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
             />
           )}
 
-          <div
-            id="textContainer4"
-            className={
-              activities.activity4.image && !activities.activity4.image.isFullWidth
-                ? styles.fullWidthIntro
-                : styles.intro
-            }
-          >
+          <div id="textContainer4">
             <p>
               Proveniente de una familia de clase trabajadora e inmigrante de Europa del Este, Ben
               Shahn fue uno de los artistas más prolíficos y comprometidos de Estados Unidos entre
