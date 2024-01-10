@@ -47,7 +47,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
   const [isSrolling, setIsScrolling] = useState(false);
   const isMobile = useMediaQueryBase({ query: `(max-width: 768px)` });
 
-  const checkTextHeight = (containerId: string) => {
+  const getTextLayout = (containerId: string) => {
     const viewportHeight = window.innerHeight;
     const element = document.getElementById(containerId);
 
@@ -66,22 +66,22 @@ const ActivityPage: React.FC<ActivityData> = () => {
   };
 
   useEffect(() => {
-    checkTextHeight('textContainer1');
-    checkTextHeight('textContainer2');
-    checkTextHeight('textContainer3');
-    checkTextHeight('textContainer4');
+    getTextLayout('textContainer1');
+    getTextLayout('textContainer2');
+    getTextLayout('textContainer3');
+    getTextLayout('textContainer4');
 
-    const actualizarClaseEnCambioDeTamaño = () => {
-      checkTextHeight('textContainer1');
-      checkTextHeight('textContainer2');
-      checkTextHeight('textContainer3');
-      checkTextHeight('textContainer4');
+    const updateClass = () => {
+      getTextLayout('textContainer1');
+      getTextLayout('textContainer2');
+      getTextLayout('textContainer3');
+      getTextLayout('textContainer4');
     };
 
-    window.addEventListener('resize', actualizarClaseEnCambioDeTamaño);
+    window.addEventListener('resize', updateClass);
 
     return () => {
-      window.removeEventListener('resize', actualizarClaseEnCambioDeTamaño);
+      window.removeEventListener('resize', updateClass);
     };
   }, []);
 
