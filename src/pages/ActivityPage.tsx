@@ -42,27 +42,48 @@ const activities: ActivityData = {
   },
 };
 
-const checkTextLength = (containerId: string) => {
-  const textContainer = document.getElementById(containerId);
-
-  if (textContainer) {
-    const paragraphs = textContainer.querySelectorAll('p');
-    const textLenght = Array.from(paragraphs).reduce(
-      (total, paragraph) => total + (paragraph.textContent ? paragraph.textContent.length : 0),
-      0
-    );
-
-    if (textLenght > 700 && textLenght < 4000) {
-      return styles.intro;
-    }
-    return styles.fullWidth;
-  }
-};
-
 const ActivityPage: React.FC<ActivityData> = () => {
   const [activeSection, setActiveSection] = useState('Home');
   const [isSrolling, setIsScrolling] = useState(false);
   const isMobile = useMediaQueryBase({ query: `(max-width: 768px)` });
+
+  const checkTextHeight = (containerId: string) => {
+    const viewportHeight = window.innerHeight;
+    const element = document.getElementById(containerId);
+
+    if (element) {
+      const elementHeight = element.offsetHeight;
+
+      console.log(viewportHeight);
+      console.log(elementHeight);
+
+      if (elementHeight + 100 > viewportHeight || elementHeight < viewportHeight / 3) {
+        element.classList.replace(styles.intro, styles.fullWidthIntro);
+      } else {
+        element.classList.add(styles.intro);
+      }
+    }
+  };
+
+  useEffect(() => {
+    checkTextHeight('textContainer1');
+    checkTextHeight('textContainer2');
+    checkTextHeight('textContainer3');
+    checkTextHeight('textContainer4');
+
+    const actualizarClaseEnCambioDeTamaño = () => {
+      checkTextHeight('textContainer1');
+      checkTextHeight('textContainer2');
+      checkTextHeight('textContainer3');
+      checkTextHeight('textContainer4');
+    };
+
+    window.addEventListener('resize', actualizarClaseEnCambioDeTamaño);
+
+    return () => {
+      window.removeEventListener('resize', actualizarClaseEnCambioDeTamaño);
+    };
+  }, []);
 
   const handleVisibilityScroll = () => {
     if (window.scrollY >= 100) {
@@ -178,12 +199,11 @@ const ActivityPage: React.FC<ActivityData> = () => {
           )}
 
           <div
+            id="textContainer1"
             className={
-              !activities.activity1.image
-                ? styles.intro
-                : activities.activity1.image.isFullWidth
-                ? styles.intro
-                : styles.fullWidthIntro
+              activities.activity1.image && !activities.activity1.image.isFullWidth
+                ? styles.fullWidthIntro
+                : styles.intro
             }
           >
             <p>
@@ -230,12 +250,11 @@ const ActivityPage: React.FC<ActivityData> = () => {
             )}
 
             <div
+              id="textContainer2"
               className={
-                !activities.activity2.image
-                  ? styles.intro
-                  : activities.activity2.image.isFullWidth
-                  ? styles.intro
-                  : styles.fullWidthIntro
+                activities.activity2.image && !activities.activity2.image.isFullWidth
+                  ? styles.fullWidthIntro
+                  : styles.intro
               }
             >
               <p>
@@ -293,12 +312,11 @@ const ActivityPage: React.FC<ActivityData> = () => {
           )}
 
           <div
+            id="textContainer3"
             className={
-              !activities.activity3.image
-                ? styles.intro
-                : activities.activity3.image.isFullWidth
-                ? styles.intro
-                : styles.fullWidthIntro
+              activities.activity3.image && !activities.activity3.image.isFullWidth
+                ? styles.fullWidthIntro
+                : styles.intro
             }
           >
             <p>
@@ -363,68 +381,6 @@ const ActivityPage: React.FC<ActivityData> = () => {
               humanos, así como el interés de Shahn por temas espirituales e historias bíblicas en
               sus últimos años.
             </p>
-            <p>
-              7. La exposición Ben Shahn. De la no conformidad examina la obra de este artista
-              (Kaunas, Lituania, 1898 - Nueva York, 1969), figura central del realismo social
-              americano. La comisaria de la muestra, Laura Katzman, propone un recorrido por los
-              principales temas, que se acompaña de la lectura dramatizada, a cargo de Alberto
-              Chessa, de una selección de ensayos y conferencias de Shahn en los que plasmó su
-              concepción del proceso creativo y los fines del arte, así como de textos que
-              influyeron en la vida y obra del artista.
-            </p>
-            <p>
-              8. Proveniente de una familia de clase trabajadora e inmigrante de Europa del Este,
-              Ben Shahn fue uno de los artistas más prolíficos y comprometidos de Estados Unidos
-              entre las décadas de 1930 y 1960. Su obra trató aspectos cruciales del contexto social
-              estadounidense y de la historia global, desde el New Deal hasta la guerra de Vietnam.
-              Promoviendo como convicción “la no conformidad” (nonconformity, en palabras del
-              artista), Shahn desafió el predominio del expresionismo abstracto y de otras variantes
-              del arte de vanguardia de la década de 1950. Esta retrospectiva, la primera organizada
-              en España, pone el foco en el compromiso del artista con una idea de justicia social
-              entendida desde la perspectiva de la diversidad y equidad contemporáneas, ya que Shahn
-              fue impulsor de los derechos de trabajadores y migrantes, y criticó abiertamente los
-              abusos perpetrados por las clases privilegiadas y poderosas.
-            </p>
-            <p>
-              9. Este recorrido curatorial incide en los aspectos fundamentales de esta exposición,
-              que incluyen las crisis económicas y medioambientales de la Gran Depresión, el auge
-              del fascismo, las atrocidades de la Segunda Guerra Mundial, las cruzadas
-              anticomunistas de la Guerra Fría, la amenaza de aniquilación de la era atómica, las
-              luchas a favor de los derechos laborales, civiles y la defensa de los derechos
-              humanos, así como el interés de Shahn por temas espirituales e historias bíblicas en
-              sus últimos años.
-            </p>
-            <p>
-              10. La exposición Ben Shahn. De la no conformidad examina la obra de este artista
-              (Kaunas, Lituania, 1898 - Nueva York, 1969), figura central del realismo social
-              americano. La comisaria de la muestra, Laura Katzman, propone un recorrido por los
-              principales temas, que se acompaña de la lectura dramatizada, a cargo de Alberto
-              Chessa, de una selección de ensayos y conferencias de Shahn en los que plasmó su
-              concepción del proceso creativo y los fines del arte, así como de textos que
-              influyeron en la vida y obra del artista.
-            </p>
-            <p>
-              11. Proveniente de una familia de clase trabajadora e inmigrante de Europa del Este,
-              Ben Shahn fue uno de los artistas más prolíficos y comprometidos de Estados Unidos
-              entre las décadas de 1930 y 1960. Su obra trató aspectos cruciales del contexto social
-              estadounidense y de la historia global, desde el New Deal hasta la guerra de Vietnam.
-              Promoviendo como convicción “la no conformidad” (nonconformity, en palabras del
-              artista), Shahn desafió el predominio del expresionismo abstracto y de otras variantes
-              del arte de vanguardia de la década de 1950. Esta retrospectiva, la primera organizada
-              en España, pone el foco en el compromiso del artista con una idea de justicia social
-              entendida desde la perspectiva de la diversidad y equidad contemporáneas, ya que Shahn
-              fue impulsor de los derechos de trabajadores y migrantes, y criticó abiertamente los
-              abusos perpetrados por las clases privilegiadas y poderosas.
-            </p>
-            <p>
-              12. Este recorrido curatorial incide en los aspectos fundamentales de esta exposición,
-              que incluyen las crisis económicas y medioambientales de la Gran Depresión, el auge
-              del fascismo, las atrocidades de la Segunda Guerra Mundial, las cruzadas
-              anticomunistas de la Guerra Fría, la amenaza de aniquilación de la era atómica, las
-              luchas a favor de los derechos laborales, civiles y la defensa de los derechos
-              humanos, así como el interés de Shahn por temas espirituales e historias bíblicas en
-              sus últimos años.
-            </p>
           </div>
         </section>
 
@@ -443,11 +399,20 @@ const ActivityPage: React.FC<ActivityData> = () => {
           <div
             id="textContainer4"
             className={
-              !activities.activity4.image
-                ? checkTextLength('textContainer4')
-                : activities.activity4.image.isFullWidth && checkTextLength('textContainer4')
+              activities.activity4.image && !activities.activity4.image.isFullWidth
+                ? styles.fullWidthIntro
+                : styles.intro
             }
           >
+            <p>
+              Proveniente de una familia de clase trabajadora e inmigrante de Europa del Este, Ben
+              Shahn fue uno de los artistas más prolíficos y comprometidos de Estados Unidos entre
+              las décadas de 1930 y 1960. Su obra trató aspectos cruciales del contexto social
+              estadounidense y de la historia global, desde el New Deal hasta la guerra de Vietnam.
+              Promoviendo como convicción “la no conformidad” (nonconformity, en palabras del
+              artista), Shahn desafió el predominio del expresionismo abstracto y de otras variantes
+              del arte de vanguardia de la década de 1950.
+            </p>
             <p>
               Proveniente de una familia de clase trabajadora e inmigrante de Europa del Este, Ben
               Shahn fue uno de los artistas más prolíficos y comprometidos de Estados Unidos entre
@@ -463,5 +428,4 @@ const ActivityPage: React.FC<ActivityData> = () => {
     </Layout>
   );
 };
-
 export default ActivityPage;
