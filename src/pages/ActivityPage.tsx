@@ -141,10 +141,10 @@ const ActivityPage: React.FC<ActivityData> = () => {
       </AnimatePresence>
 
       <div className={styles.wrapper}>
-        <h1>Actividad</h1>
+        <h1 className={styles.title}>Actividad</h1>
         <Link to="/">Volver a la home</Link>
         <section id="seccion1" ref={sectionRefs[0]}>
-          <h2>{activities.activity1.title}</h2>
+          <h2 className={styles.sectionTitle}>{activities.activity1.title}</h2>
 
           {activities.activity1.image && (
             <img
@@ -164,7 +164,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
                 : styles.fullWidthIntro
             }
           >
-            <p>
+            <p className={styles.contentText}>
               La exposición Ben Shahn. De la no conformidad examina la obra de este artista (Kaunas,
               Lituania, 1898 - Nueva York, 1969), figura central del realismo social americano. La
               comisaria de la muestra, Laura Katzman, propone un recorrido por los principales
@@ -173,7 +173,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               proceso creativo y los fines del arte, así como de textos que influyeron en la vida y
               obra del artista.
             </p>
-            <p>
+            <p className={styles.contentText}>
               Proveniente de una familia de clase trabajadora e inmigrante de Europa del Este, Ben
               Shahn fue uno de los artistas más prolíficos y comprometidos de Estados Unidos entre
               las décadas de 1930 y 1960. Su obra trató aspectos cruciales del contexto social
@@ -186,7 +186,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               fue impulsor de los derechos de trabajadores y migrantes, y criticó abiertamente los
               abusos perpetrados por las clases privilegiadas y poderosas.
             </p>
-            <p>
+            <p className={styles.contentText}>
               Este recorrido curatorial incide en los aspectos fundamentales de esta exposición, que
               incluyen las crisis económicas y medioambientales de la Gran Depresión, el auge del
               fascismo, las atrocidades de la Segunda Guerra Mundial, las cruzadas anticomunistas de
@@ -198,7 +198,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
         </section>
 
         <section id="seccion2" ref={sectionRefs[1]}>
-          <h2>{activities.activity2.title}</h2>
+          <h2 className={styles.sectionTitle}>{activities.activity2.title}</h2>
           <div>
             {activities.activity2.image && (
               <img
@@ -216,7 +216,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
                   : styles.fullWidthIntro
               }
             >
-              <p>
+              <p className={styles.contentText}>
                 La exposición Ben Shahn. De la no conformidad examina la obra de este artista
                 (Kaunas, Lituania, 1898 - Nueva York, 1969), figura central del realismo social
                 americano. La comisaria de la muestra, Laura Katzman, propone un recorrido por los
@@ -225,7 +225,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
                 concepción del proceso creativo y los fines del arte, así como de textos que
                 influyeron en la vida y obra del artista.
               </p>
-              <p>
+              <p className={styles.contentText}>
                 Proveniente de una familia de clase trabajadora e inmigrante de Europa del Este, Ben
                 Shahn fue uno de los artistas más prolíficos y comprometidos de Estados Unidos entre
                 las décadas de 1930 y 1960. Su obra trató aspectos cruciales del contexto social
@@ -239,7 +239,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
                 migrantes, y criticó abiertamente los abusos perpetrados por las clases
                 privilegiadas y poderosas.
               </p>
-              <p>
+              <p className={styles.contentText}>
                 Este recorrido curatorial incide en los aspectos fundamentales de esta exposición,
                 que incluyen las crisis económicas y medioambientales de la Gran Depresión, el auge
                 del fascismo, las atrocidades de la Segunda Guerra Mundial, las cruzadas
@@ -259,7 +259,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
         </section>
 
         <section id="seccion3" ref={sectionRefs[2]}>
-          <h2>{activities.activity3.title}</h2>
+          <h2 className={styles.sectionTitle}>{activities.activity3.title}</h2>
 
           {activities.activity3.image && (
             <img
@@ -279,7 +279,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
                 : styles.fullWidthIntro
             }
           >
-            <p>
+            <p className={styles.contentText}>
               1. La exposición Ben Shahn. De la no conformidad examina la obra de este artista
               (Kaunas, Lituania, 1898 - Nueva York, 1969), figura central del realismo social
               americano. La comisaria de la muestra, Laura Katzman, propone un recorrido por los
@@ -288,7 +288,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               concepción del proceso creativo y los fines del arte, así como de textos que
               influyeron en la vida y obra del artista.
             </p>
-            <p>
+            <p className={styles.contentText}>
               2. Proveniente de una familia de clase trabajadora e inmigrante de Europa del Este,
               Ben Shahn fue uno de los artistas más prolíficos y comprometidos de Estados Unidos
               entre las décadas de 1930 y 1960. Su obra trató aspectos cruciales del contexto social
@@ -301,7 +301,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               fue impulsor de los derechos de trabajadores y migrantes, y criticó abiertamente los
               abusos perpetrados por las clases privilegiadas y poderosas.
             </p>
-            <p>
+            <p className={styles.contentText}>
               3. Este recorrido curatorial incide en los aspectos fundamentales de esta exposición,
               que incluyen las crisis económicas y medioambientales de la Gran Depresión, el auge
               del fascismo, las atrocidades de la Segunda Guerra Mundial, las cruzadas
@@ -310,7 +310,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               humanos, así como el interés de Shahn por temas espirituales e historias bíblicas en
               sus últimos años.
             </p>
-            <p>
+            <p className={styles.contentText}>
               4. La exposición Ben Shahn. De la no conformidad examina la obra de este artista
               (Kaunas, Lituania, 1898 - Nueva York, 1969), figura central del realismo social
               americano. La comisaria de la muestra, Laura Katzman, propone un recorrido por los
@@ -319,7 +319,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               concepción del proceso creativo y los fines del arte, así como de textos que
               influyeron en la vida y obra del artista.
             </p>
-            <p>
+            <p className={styles.contentText}>
               5. Proveniente de una familia de clase trabajadora e inmigrante de Europa del Este,
               Ben Shahn fue uno de los artistas más prolíficos y comprometidos de Estados Unidos
               entre las décadas de 1930 y 1960. Su obra trató aspectos cruciales del contexto social
@@ -332,7 +332,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               fue impulsor de los derechos de trabajadores y migrantes, y criticó abiertamente los
               abusos perpetrados por las clases privilegiadas y poderosas.
             </p>
-            <p>
+            <p className={styles.contentText}>
               6. Este recorrido curatorial incide en los aspectos fundamentales de esta exposición,
               que incluyen las crisis económicas y medioambientales de la Gran Depresión, el auge
               del fascismo, las atrocidades de la Segunda Guerra Mundial, las cruzadas
@@ -341,7 +341,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               humanos, así como el interés de Shahn por temas espirituales e historias bíblicas en
               sus últimos años.
             </p>
-            <p>
+            <p className={styles.contentText}>
               7. La exposición Ben Shahn. De la no conformidad examina la obra de este artista
               (Kaunas, Lituania, 1898 - Nueva York, 1969), figura central del realismo social
               americano. La comisaria de la muestra, Laura Katzman, propone un recorrido por los
@@ -350,7 +350,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               concepción del proceso creativo y los fines del arte, así como de textos que
               influyeron en la vida y obra del artista.
             </p>
-            <p>
+            <p className={styles.contentText}>
               8. Proveniente de una familia de clase trabajadora e inmigrante de Europa del Este,
               Ben Shahn fue uno de los artistas más prolíficos y comprometidos de Estados Unidos
               entre las décadas de 1930 y 1960. Su obra trató aspectos cruciales del contexto social
@@ -363,7 +363,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               fue impulsor de los derechos de trabajadores y migrantes, y criticó abiertamente los
               abusos perpetrados por las clases privilegiadas y poderosas.
             </p>
-            <p>
+            <p className={styles.contentText}>
               9. Este recorrido curatorial incide en los aspectos fundamentales de esta exposición,
               que incluyen las crisis económicas y medioambientales de la Gran Depresión, el auge
               del fascismo, las atrocidades de la Segunda Guerra Mundial, las cruzadas
@@ -372,7 +372,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               humanos, así como el interés de Shahn por temas espirituales e historias bíblicas en
               sus últimos años.
             </p>
-            <p>
+            <p className={styles.contentText}>
               10. La exposición Ben Shahn. De la no conformidad examina la obra de este artista
               (Kaunas, Lituania, 1898 - Nueva York, 1969), figura central del realismo social
               americano. La comisaria de la muestra, Laura Katzman, propone un recorrido por los
@@ -381,7 +381,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               concepción del proceso creativo y los fines del arte, así como de textos que
               influyeron en la vida y obra del artista.
             </p>
-            <p>
+            <p className={styles.contentText}>
               11. Proveniente de una familia de clase trabajadora e inmigrante de Europa del Este,
               Ben Shahn fue uno de los artistas más prolíficos y comprometidos de Estados Unidos
               entre las décadas de 1930 y 1960. Su obra trató aspectos cruciales del contexto social
@@ -394,7 +394,7 @@ const ActivityPage: React.FC<ActivityData> = () => {
               fue impulsor de los derechos de trabajadores y migrantes, y criticó abiertamente los
               abusos perpetrados por las clases privilegiadas y poderosas.
             </p>
-            <p>
+            <p className={styles.contentText}>
               12. Este recorrido curatorial incide en los aspectos fundamentales de esta exposición,
               que incluyen las crisis económicas y medioambientales de la Gran Depresión, el auge
               del fascismo, las atrocidades de la Segunda Guerra Mundial, las cruzadas

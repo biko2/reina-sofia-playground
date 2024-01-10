@@ -1,5 +1,6 @@
 .title {
   color: red;
+  font-size: clamp(1rem, 0.5rem + 2.5vw, 3rem);
 }
 
 body {

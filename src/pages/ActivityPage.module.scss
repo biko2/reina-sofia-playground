@@ -8,6 +8,18 @@
   height: auto;
 }
 
+.title {
+  font-size: clamp(1rem, 0.5rem + 2.5vw, 3rem);
+}
+
+.sectionTitle {
+  font-size: clamp(0.75rem, 0.5rem + 2vw, 2.5rem);
+}
+
+.contentText {
+  font-size: clamp(0.5rem, 0.5rem + 1vw, 1.25rem);
+}
+
 .navbarWrapper {
   position: fixed;
   bottom: 0;
